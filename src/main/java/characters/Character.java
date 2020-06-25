@@ -31,12 +31,17 @@ public class Character {
         return weapon;
     }
 
+    public boolean hasWeapon() {
+        return weapon != null;
+    }
+
     public void changeHP(int change) {
         healthPoints += change;
     }
 
     public void dealDamage(Character character) {
-        int damage = -1 * strength * weapon.getAttackPower();
+        int modifier =  hasWeapon() ? weapon.getAttackPower() : 1;
+        int damage = -1 * strength * modifier;
         character.changeHP(damage);
     }
 }
