@@ -39,7 +39,7 @@ public class Character {
         healthPoints += change;
     }
 
-    public void dealDamage(Character character) {
+    public void attack(Character character) {
         int modifier =  hasWeapon() ? weapon.getAttackPower() : 1;
         int damage = -1 * strength * modifier;
         character.changeHP(damage);
