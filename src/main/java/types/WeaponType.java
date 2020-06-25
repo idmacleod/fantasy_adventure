@@ -1,14 +1,14 @@
 package types;
 
 public enum WeaponType {
-    AXE("Warrior", 10),
-    SWORD("Warrior", 9),
-    DAGGER("Thief", 4),
-    BOW("Thief", 5),
-    STAFF("WhiteMage", 2),
-    SCROLL("WhiteMage", 1),
-    WAND("BlackMage", 1),
-    MACE("BlackMage", 7);
+    AXE("characters.physical.Warrior", 10),
+    SWORD("characters.physical.Warrior", 9),
+    DAGGER("characters.physical.Thief", 4),
+    BOW("characters.physical.Thief", 5),
+    STAFF("characters.magical.WhiteMage", 2),
+    SCROLL("characters.magical.WhiteMage", 1),
+    WAND("characters.magical.BlackMage", 1),
+    MACE("characters.magical.BlackMage", 7);
 
     private final String characterClass;
     private final int attackPower;

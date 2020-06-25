@@ -31,10 +31,6 @@ public class GameCharacter {
         return weapon;
     }
 
-    public void setWeapon(WeaponType weapon) {
-        this.weapon = weapon;
-    }
-
     public boolean hasWeapon() {
         return weapon != null;
     }
@@ -50,12 +46,13 @@ public class GameCharacter {
     }
 
     public String getCharacterClass() {
+        System.out.println(this.getClass().getName());
         return this.getClass().getName();
     }
 
     public void equipWeapon(WeaponType weapon) {
         if (this.getCharacterClass().equals(weapon.getCharacterClass())) {
-            this.setWeapon(weapon);
+            this.weapon = weapon;
         }
     }
 }
