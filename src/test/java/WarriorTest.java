@@ -1,3 +1,4 @@
+import characters.Enemy;
 import characters.physical.Warrior;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +39,22 @@ public class WarriorTest {
     }
 
     @Test
+    public void canCheckIfHasWeapon__false() {
+        assertFalse(warrior.hasWeapon());
+    }
+
+    @Test
+    public void canCheckIfHasWeapon__true() {
+        warrior.equipWeapon(sword);
+        assertTrue(warrior.hasWeapon());
+    }
+
+    @Test
+    public void canGetCharacterClass() {
+        assertEquals("characters.physical.Warrior", warrior.getCharacterClass());
+    }
+
+    @Test
     public void canEquipWarriorWeapon() {
         warrior.equipWeapon(sword);
         assertEquals(sword, warrior.getWeapon());
@@ -50,14 +67,23 @@ public class WarriorTest {
     }
 
     @Test
-    public void canCheckIfHasWeapon__false() {
-        assertFalse(warrior.hasWeapon());
+    public void canChangeHP() {
+        warrior.changeHP(-100);
+        assertEquals(900, warrior.getHealthPoints());
     }
 
     @Test
-    public void canCheckIfHasWeapon__true() {
+    public void canAttack(){
+        Enemy enemy = new Enemy("Goblin", 1000, 50, wand);
         warrior.equipWeapon(sword);
-        assertTrue(warrior.hasWeapon());
+        warrior.attack(enemy);
+        assertEquals(100, enemy.getHealthPoints());
     }
 
+    @Test
+    public void canUseDeathblow() {
+        Enemy enemy = new Enemy("Dragon", 10000, 500, null);
+        warrior.deathblow(enemy);
+        System.out.println("Dragon's HP: " + enemy.getHealthPoints());
+    }
 }

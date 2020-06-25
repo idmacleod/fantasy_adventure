@@ -2,7 +2,7 @@ package characters;
 
 import types.WeaponType;
 
-public class GameCharacter {
+public abstract class GameCharacter {
     private String name;
     private int healthPoints;
     private int strength;
@@ -35,6 +35,20 @@ public class GameCharacter {
         return weapon != null;
     }
 
+    public void setWeapon(WeaponType weapon) {
+        this.weapon = weapon;
+    }
+
+    public String getCharacterClass() {
+        return this.getClass().getName();
+    }
+
+    public void equipWeapon(WeaponType weapon) {
+        if (this.getCharacterClass().equals(weapon.getCharacterClass())) {
+            setWeapon(weapon);
+        }
+    }
+
     public void changeHP(int change) {
         healthPoints += change;
     }
@@ -43,16 +57,5 @@ public class GameCharacter {
         int modifier =  hasWeapon() ? weapon.getAttackPower() : 1;
         int damage = -1 * strength * modifier;
         character.changeHP(damage);
-    }
-
-    public String getCharacterClass() {
-        System.out.println(this.getClass().getName());
-        return this.getClass().getName();
-    }
-
-    public void equipWeapon(WeaponType weapon) {
-        if (this.getCharacterClass().equals(weapon.getCharacterClass())) {
-            this.weapon = weapon;
-        }
     }
 }
